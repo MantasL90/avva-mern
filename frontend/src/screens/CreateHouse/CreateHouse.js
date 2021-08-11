@@ -18,17 +18,6 @@ import { createHouseAction } from "../../actions/housesAction";
 import ErrorMessage from "../../components/Header/ErrorMessage";
 import ReactMarkdown from "react-markdown";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="/">
-        Avva Database {new Date().getFullYear()}
-      </Link>
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -157,9 +146,6 @@ function CreateHouse({ history }) {
           </Box>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

@@ -13,7 +13,9 @@ import {
   AccordionSummary,
   AccordionDetails,
   Chip,
+  Grid,
 } from "@material-ui/core";
+import "./Houses.css";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -39,7 +41,7 @@ const useStyles = makeStyles(() => ({
       backgroundColor: "#04B0F1",
     },
   },
-  desc: { display: "block" },
+  desc: { display: "block", backgrounColor: "#f2f6fc" },
 }));
 
 function Houses({ search }) {
@@ -113,15 +115,13 @@ function Houses({ search }) {
                 </Button>
               </AccordionSummary>
               <AccordionDetails className={classes.desc}>
-                <Chip
-                  label={house.category}
-                  style={{ marginBottom: 5 }}
-                  variant="outlined"
-                />
                 <ReactMarkdown>{house.content}</ReactMarkdown>
-                <Typography variant="caption">
-                  Updated : {house.createdAt.substring(0, 10)}
-                </Typography>
+                <Grid>
+                  <Chip label={house.category} variant="outlined" />
+                  <Typography variant="caption" style={{ marginLeft: 120 }}>
+                    Updated : {house.createdAt.substring(0, 10)}
+                  </Typography>
+                </Grid>
               </AccordionDetails>
             </Accordion>
           ))}

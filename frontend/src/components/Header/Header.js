@@ -7,7 +7,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import ContactsIcon from "@material-ui/icons/Contacts";
-import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Drawer from "@material-ui/core/Drawer";
 import React, { useState } from "react";
@@ -16,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, List, ListItem } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../actions/userActions";
+import "./Header.css";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -56,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
   },
-  drawer: { width: "300px" },
+  drawer: { width: "300px", margin: 20, fontSize: 30 },
+  greeting: {},
   loginLink: { color: "white" },
 }));
 
@@ -78,23 +79,6 @@ export default function Header({ setSearch }) {
   const toggleDrawer = (open) => (event) => {
     setState(open);
   };
-
-  const list = () => (
-    <List className={classes.drawer}>
-      <ListItem>
-        <HomeIcon />
-        <Link href="/create">Create House</Link>
-      </ListItem>
-      <ListItem>
-        <ContactsIcon />
-        <Link href="/contacts">Contacts</Link>
-      </ListItem>
-      <ListItem>
-        <ExitToAppIcon />
-        <Link onClick={logoutHandler}>Log out</Link>
-      </ListItem>
-    </List>
-  );
 
   return (
     <div className={classes.grow}>
@@ -130,8 +114,37 @@ export default function Header({ setSearch }) {
               <MenuIcon />
             </IconButton>
             <Drawer anchor={"left"} open={state} onClose={toggleDrawer(false)}>
-              {userInfo && `Welcome back, ${userInfo.name}..`}
-              {list()}
+              <div className={classes.drawer}>
+                <Typography variant="h6" color="primary">
+                  {userInfo && `Welcome back, ${userInfo.name}..`}
+                </Typography>
+                <List>
+                  <ListItem>
+                    <HomeIcon
+                      color="primary"
+                      fontSize="large"
+                      style={{ marginRight: 10 }}
+                    />
+                    <Link href="/create">Create House</Link>
+                  </ListItem>
+                  <ListItem>
+                    <ContactsIcon
+                      color="primary"
+                      fontSize="large"
+                      style={{ marginRight: 10 }}
+                    />
+                    <Link href="/contacts">Contacts</Link>
+                  </ListItem>
+                  <ListItem>
+                    <ExitToAppIcon
+                      color="primary"
+                      fontSize="large"
+                      style={{ marginRight: 10 }}
+                    />
+                    <Link onClick={logoutHandler}>Log out</Link>
+                  </ListItem>
+                </List>
+              </div>
             </Drawer>
           </Toolbar>
         ) : (

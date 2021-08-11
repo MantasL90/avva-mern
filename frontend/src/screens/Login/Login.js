@@ -16,18 +16,6 @@ import Container from "@material-ui/core/Container";
 import ErrorMessage from "../../components/Header/ErrorMessage";
 import { login } from "../../actions/userActions";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Avva DB
-      </Link>
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -134,9 +122,6 @@ function Login({ history }) {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

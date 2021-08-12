@@ -85,6 +85,12 @@ function Houses({ search }) {
     successfullyDeleted,
   ]);
 
+  const comparefunction = (a, b) => {
+    if (a.title < b.title) return -1;
+    if (a.title > b.title) return 1;
+    return 0;
+  };
+
   return (
     <div className="houses-page">
       {errorDelete && <ErrorMessage>{errorDelete}</ErrorMessage>}
@@ -94,7 +100,7 @@ function Houses({ search }) {
           .filter((filteredHouse) =>
             filteredHouse.title.toLowerCase().includes(search.toLowerCase())
           )
-          .reverse()
+          .sort(comparefunction)
           .map((house, i) => (
             <Accordion key={i}>
               <AccordionSummary>

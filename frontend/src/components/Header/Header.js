@@ -56,8 +56,8 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
   },
-  drawer: { width: "300px", margin: 20, fontSize: 30 },
-  greeting: {},
+  drawer: { width: "300px", margin: 10, fontSize: 20 },
+  greeting: { paddingBottom: 5 },
   loginLink: { color: "white" },
 }));
 
@@ -115,31 +115,37 @@ export default function Header({ setSearch }) {
             </IconButton>
             <Drawer anchor={"left"} open={state} onClose={toggleDrawer(false)}>
               <div className={classes.drawer}>
-                <Typography variant="h6" color="primary">
-                  {userInfo && `Welcome back, ${userInfo.name}..`}
-                </Typography>
-                <List>
+                <div style={{ marginBottom: 5 }}>
+                  <Typography
+                    variant="h8"
+                    color="primary"
+                    className={classes.greeting}
+                  >
+                    {userInfo && `Welcome back, ${userInfo.name}`}
+                  </Typography>
+                </div>
+                <List style={{ borderTop: "1px solid lightgray" }}>
                   <ListItem>
                     <HomeIcon
                       color="primary"
-                      fontSize="large"
-                      style={{ marginRight: 10 }}
+                      fontSize="medium"
+                      style={{ marginRight: 20 }}
                     />
                     <Link href="/create">Create House</Link>
                   </ListItem>
                   <ListItem>
                     <ContactsIcon
                       color="primary"
-                      fontSize="large"
-                      style={{ marginRight: 10 }}
+                      fontSize="medium"
+                      style={{ marginRight: 20 }}
                     />
                     <Link href="/contacts">Contacts</Link>
                   </ListItem>
-                  <ListItem>
+                  <ListItem style={{ cursor: "pointer" }}>
                     <ExitToAppIcon
                       color="primary"
-                      fontSize="large"
-                      style={{ marginRight: 10 }}
+                      fontSize="medium"
+                      style={{ marginRight: 20 }}
                     />
                     <Link onClick={logoutHandler}>Log out</Link>
                   </ListItem>
